@@ -19,8 +19,8 @@ const ID_TYPE = Sequelize.STRING(50);
 function joinAttr(obj) {
   /**拼接ｍｏｄｅｌ的参数 */
   const attrs = {};
-  for (let key in attributes) {
-    let value = attributes[key];
+    for (let key in obj) {
+        let value = obj[key];
     if (typeof value === "object" && value["type"]) {
       value.allowNull = value.allowNull || false;
       attrs[key] = value;
@@ -51,7 +51,7 @@ function joinAttr(obj) {
 }
 
 function defineModel(name, attributes) {
-  joinAttr(attributes);
+  const attrs = joinAttr(attributes);
   return sequelize.define(name, attrs, {
     tableName: name,
     timestamps: false,
@@ -94,3 +94,12 @@ const exp = {
     }
   }
 };
+
+for (let type of TYPES) {
+  exp[type] = Sequelize[type];
+}
+
+exp.ID = ID_TYPE;
+
+console.log(exp)
+module.exports = exp;

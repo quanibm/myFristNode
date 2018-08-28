@@ -45,9 +45,12 @@ const Pet = sequelize.define(
   }
 );
 
-const now = new Date().getTime();
+module.exports = Pet;
 
-// (async () => {/**增 */
+// const now = new Date().getTime();
+
+// (async () => {
+//   /**增 */
 //   const newdog = await Pet.create({
 //     id: "d-" + now,
 //     name: "cat",
@@ -90,3 +93,33 @@ const now = new Date().getTime();
 //     console.log(JSON.stringify(f));
 //   }
 // })();
+
+// module.exports = {};
+
+// const fn_mysql = {
+//   addTable: async obj => {
+//     /**增 */
+//     await Pet.create(obj);
+//   },
+//   dropTable: async paramsObj => {
+//     /**删 */
+//     const fristtable = await Pet.findAll({
+//       where: paramsObj
+//     });
+//     for (let f of fristtable) {
+//       await f.destroy();
+//     }
+//   },
+//   query: async paramsObj => {
+//     /**删 */
+//     const fristtable = await Pet.findAll({
+//       where: paramsObj
+//     });
+//   },
+//   change: async paramsObj => {
+//     /**删 */
+//     const fristtable = await Pet.findAll({
+//       where: paramsObj
+//     });
+//   }
+// };
