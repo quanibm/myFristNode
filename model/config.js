@@ -1,7 +1,7 @@
 "use strict";
 
 const defaultConfig = "./config-default.js";
-const ovarrideConfig = "./config-ovarride.js";
+const overrideConfig = "./config-ovarride.js";
 const testConfig = "./config-test.js";
 
 const fs = require("fs");

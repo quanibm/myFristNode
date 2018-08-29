@@ -1,12 +1,21 @@
 "use strict";
 
 const Sequelize = require("sequelize");
-
+const uuid = require("node-uuid");
 console.log("init sequeliZe....");
+const {
+  dialect,
+  database,
+  username,
+  password,
+  port,
+  host
+} = require("./config");
 
-const sequelize = new Sequelize("dbname", "username", "password", {
-  host: "localhost",
-  dialect: "mysql",
+const sequelize = new Sequelize(database, username, password, {
+  dialect: dialect,
+  port: port,
+  host: host,
   pool: {
     max: 5,
     min: 0,
@@ -16,11 +25,15 @@ const sequelize = new Sequelize("dbname", "username", "password", {
 
 const ID_TYPE = Sequelize.STRING(50);
 
+function generateId() {
+  return uuid.v4();
+}
+
 function joinAttr(obj) {
   /**拼接ｍｏｄｅｌ的参数 */
   const attrs = {};
-    for (let key in obj) {
-        let value = obj[key];
+  for (let key in obj) {
+    let value = obj[key];
     if (typeof value === "object" && value["type"]) {
       value.allowNull = value.allowNull || false;
       attrs[key] = value;
@@ -101,5 +114,4 @@ for (let type of TYPES) {
 
 exp.ID = ID_TYPE;
 
-console.log(exp)
 module.exports = exp;
