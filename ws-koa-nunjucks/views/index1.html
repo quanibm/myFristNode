@@ -1,0 +1,23 @@
+{% extends "base.html" %} {% block main %}
+<div id="app">
+    <div>
+        <p v-for="(item, index) in items" :key="index">
+            {{ item }}
+            <span v-text="item.message"></span>
+        </p>
+        <p v-if="false" v-text="a"></p>
+    </div>
+</div>
+<script>
+    new Vue({
+            el: '#app',
+            data: {
+                items: [
+                    { message: 'Foo' },
+                    { message: 'Bar' }
+                ],
+                a:'aaa'
+            }
+        })
+</script>
+{% endblock %}
