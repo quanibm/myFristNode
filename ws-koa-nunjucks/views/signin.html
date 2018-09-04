@@ -6,9 +6,21 @@
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
         <title>Document</title>
         <script src="../static/js/vue.min.js"></script>
-
+        <style>
+            html, body {
+                font-size: 30px;
+            }
+            p {
+                font-size: .625rem /* 10/16 */;
+            }
+            span {
+                font-size: 10px;
+            }
+        </style>
     </head>
     <body>
+        <span>123</span>
+        <p>123</p>
         <div id="app">
             <li v-for="(item, index) in items" :key="index">
                 {{item.a}}
